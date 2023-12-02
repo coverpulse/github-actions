@@ -1,6 +1,7 @@
 name: CoverPulse coverage report upload
 description: use this GitHub Action to upload your code coverage report
-
+icon: activity
+color: green
 inputs:
   project-id:
     required: true
