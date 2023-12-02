@@ -1,0 +1,23 @@
+name: CoverPulse coverage report upload
+description: use this GitHub Action to upload your code coverage report
+
+inputs:
+  project-id:
+    required: true
+    type: string
+  token:
+    required: true
+    type: string
+  file-path:
+    required: true
+    type: string
+
+
+runs:
+  using: "composite"
+  name: Upload coverage report
+  runs-on: ubuntu-latest
+  steps:
+    - run: |
+        curl --fail-with-body -X POST https://api.coverpulse.io/v1/ci-runs?commit_sha="${{ github.sha }}&project_id=${{ inputs.project-id }}" -H "Authorization: ${{ inputs.token }}" -F report="@./${{ inputs.file-path }}"
+
