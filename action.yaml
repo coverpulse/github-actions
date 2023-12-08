@@ -19,5 +19,5 @@ runs:
   steps:
     - shell: bash
       run: |
-        curl --fail-with-body -X POST https://api.coverpulse.io/v1/ci-runs?commit_sha="${{ github.sha }}&project_id=${{ inputs.project-id }}" -H "Authorization: ${{ inputs.token }}" -F report="@./${{ inputs.file-path }}"
+        curl --fail-with-body -X POST https://api.coverpulse.io/v1/ci-runs?commit_sha="${{ github.sha }}&project_id=${{ inputs.project-id }}" -H "Authorization: ${{ inputs.token }}" -F report="@${{ inputs.file-path }}"
 
