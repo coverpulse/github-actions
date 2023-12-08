@@ -16,8 +16,6 @@ inputs:
 
 runs:
   using: "composite"
-  name: Upload coverage report
-  runs-on: ubuntu-latest
   steps:
     - run: |
         curl --fail-with-body -X POST https://api.coverpulse.io/v1/ci-runs?commit_sha="${{ github.sha }}&project_id=${{ inputs.project-id }}" -H "Authorization: ${{ inputs.token }}" -F report="@./${{ inputs.file-path }}"
